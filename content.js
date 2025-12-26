@@ -1,43 +1,6 @@
 (function() {
   'use strict';
 
-  // Knowledge base for common CAPTCHA questions
-  const knowledgeBase = {
-    'secure shell': 'ssh',
-    'ssh': 'ssh',
-    'hypertext transfer protocol': 'http',
-    'http': 'http',
-    'https': 'https',
-    'file transfer protocol': 'ftp',
-    'ftp': 'ftp',
-    'domain name system': 'dns',
-    'dns': 'dns',
-    'transmission control protocol': 'tcp',
-    'tcp': 'tcp',
-    'user datagram protocol': 'udp',
-    'udp': 'udp',
-    'internet protocol': 'ip',
-    'ip': 'ip',
-    'secure sockets layer': 'ssl',
-    'ssl': 'ssl',
-    'transport layer security': 'tls',
-    'tls': 'tls',
-    'uniform resource locator': 'url',
-    'url': 'url',
-    'application programming interface': 'api',
-    'api': 'api',
-    'cascading style sheets': 'css',
-    'css': 'css',
-    'hypertext markup language': 'html',
-    'html': 'html',
-    'structured query language': 'sql',
-    'sql': 'sql',
-    'extensible markup language': 'xml',
-    'xml': 'xml',
-    'javascript object notation': 'json',
-    'json': 'json'
-  };
-
   function extractAnswer(labelText) {
   
     const parenMatch = labelText.match(/\(([^)]+)\)/);
