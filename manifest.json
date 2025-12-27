@@ -3,12 +3,26 @@
   "name": "UIT CAPTCHA Solver",
   "version": "1.0",
   "description": "Automatically solves text-based CAPTCHA questions",
-  "permissions": ["activeTab", "scripting"],
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
   "action": {
     "default_popup": "popup.html"
   },
   "content_scripts": [
     {
+      "matches": [
+        "https://daa.uit.edu.vn/*",
+        "https://student.uit.edu.vn/*"
+      ],
+      "js": [
+        "modules/mathSolver.js",
+        "modules/answerExtractor.js",
+        "modules/captchaSolver.js",
+        "content.js"
+      ],
       "matches": ["https://daa.uit.edu.vn/*"],
       "js": ["content.js"],
       "run_at": "document_idle"

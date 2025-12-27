@@ -1,18 +1,24 @@
-document.getElementById('solveBtn').addEventListener('click', async () => {
+document.getElementById('switchAccountBtn').addEventListener('click', async () => {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    function: () => {
-      const event = new CustomEvent('solveCaptcha');
-      document.dispatchEvent(event);
-      
-      const captchas = document.querySelectorAll('.captcha input[type="text"]');
-      return captchas.length;
-    }
-  }, (results) => {
-    const count = results[0].result;
-    document.getElementById('status').textContent = 
-      `Found ${count} CAPTCHA field(s). Check the page!`;
-  });
+
+  // Redirect to the UIT DAA homepage for login
+  await chrome.tabs.update(tab.id, { url: 'https://daa.uit.edu.vn/' });
+
+  document.getElementById('status').textContent = 'Redirecting to login page...';
+
+  // Close the popup after a short delay
+  setTimeout(() => window.close(), 500);
+});
+
+// Switch Account - Redirect to homepage for login
+document.getElementById('switchAccountBtn').addEventListener('click', async () => {
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+
+  // Redirect to the UIT DAA homepage for login
+  await chrome.tabs.update(tab.id, { url: 'https://daa.uit.edu.vn/' });
+
+  document.getElementById('status').textContent = 'Redirecting to login page...';
+
+  // Close the popup after a short delay
+  setTimeout(() => window.close(), 500);
 });
