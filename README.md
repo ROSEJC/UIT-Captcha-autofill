@@ -6,7 +6,7 @@ A Chrome extension that automatically solves text-based CAPTCHA questions on the
 
 - Automatically detects and solves text-based CAPTCHAs
 - Extracts answers from parentheses in CAPTCHA labels
-- Works on https://daa.uit.edu.vn/sinhvien/kqhoctap
+- Works on https://daa.uit.edu.vn/
 - Manual solve button in extension popup
 
 ## Installation

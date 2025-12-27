@@ -23,6 +23,8 @@
         "modules/captchaSolver.js",
         "content.js"
       ],
+      "matches": ["https://daa.uit.edu.vn/*"],
+      "js": ["content.js"],
       "run_at": "document_idle"
     }
   ]
