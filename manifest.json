@@ -6,7 +6,12 @@
   "permissions": [
     "activeTab",
     "scripting",
-    "tabs"
+    "tabs",
+    "browsingData"
+  ],
+  "host_permissions": [
+    "https://daa.uit.edu.vn/*",
+    "https://student.uit.edu.vn/*"
   ],
   "action": {
     "default_popup": "popup.html"
@@ -23,8 +28,6 @@
         "modules/captchaSolver.js",
         "content.js"
       ],
-      "matches": ["https://daa.uit.edu.vn/*"],
-      "js": ["content.js"],
       "run_at": "document_idle"
     }
   ]
