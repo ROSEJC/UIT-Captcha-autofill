@@ -1,52 +1,60 @@
 # UIT CAPTCHA Autofill
 
-A Chrome extension that auto-fills UIT **text-based CAPTCHA** inputs when the answer is embedded in the label text inside parentheses.
+A browser extension that auto-fills UIT **text-based CAPTCHA** inputs when the answer is embedded in the label text inside parentheses.
 
-Example: `What is 2+2? (4)` → fills `4`.
+Example: `What is 2+2? (4)` fills `4`.
 
 ## What It Does
 
 - Detects CAPTCHA containers (elements with `.captcha` or classes containing `captcha`)
-- Reads the `label` text and extracts the first parenthesized value
+- Reads the `label` text and extracts the last parenthesized value
 - Fills the associated text input and triggers `input`/`change` events
 - Re-runs automatically when the page updates (via `MutationObserver`)
 
 ## Supported Site(s)
 
-Currently configured to run on:
-
 - `https://daa.uit.edu.vn/*`
 - `https://student.uit.edu.vn/*`
 
+## Install on Chrome (unpacked)
 
-## Installation (Unpacked)
+1. Download or clone this repository.
+2. Open `chrome://extensions/`.
+3. Enable **Developer mode**.
+4. Click **Load unpacked** and select this project folder.
 
-1. Download or clone this repository
-2. Open Chrome → `chrome://extensions/`
-3. Enable **Developer mode**
-4. Click **Load unpacked** and select this project folder
+## Install on Firefox (temporary, unsigned)
+
+Firefox requires signing for permanent installs. For development and testing, load it temporarily:
+
+1. Open `about:debugging#/runtime/this-firefox`.
+2. Click **Load Temporary Add-on...**.
+3. Pick `manifest.json` in this folder.
+
+This works until the browser restarts. On release Firefox you cannot install it permanently without signing. Developer Edition/Nightly can disable signing via `xpinstall.signatures.required=false` (about:config), or you can submit to addons.mozilla.org to get a signed XPI.
 
 ## Usage
 
-1. Visit `https://daa.uit.edu.vn/`
-2. When a text CAPTCHA appears, the extension auto-fills it if it contains an answer in parentheses
-3. Optional: click the extension icon and use **Switch Account** to clear UIT cookies (sign out) and redirect to the DAA login page
+1. Visit `https://daa.uit.edu.vn/`.
+2. When a text CAPTCHA appears, the extension auto-fills it if it contains an answer in parentheses.
+3. Optional: click the extension icon and use **Switch Account** to clear UIT cookies and redirect to the login page.
 
 ## Project Files
 
-- `content.js`: CAPTCHA extraction + autofill logic
-- `popup.html` / `popup.js`: popup UI (currently includes “Switch Account”)
-- `manifest.json`: Chrome Manifest V3 configuration
-- `modules/`: present in repo but not currently injected by `manifest.json`
+- `content.js`: CAPTCHA extraction and autofill logic.
+- `popup.html` / `popup.js`: popup UI (includes Switch Account).
+- `manifest.json`: WebExtension manifest (Chrome/Firefox friendly).
+- `modules/`: shared helpers for solving/extracting answers.
 
 ## Permissions
 
 Declared in `manifest.json`:
 
-- `activeTab`: access the currently active tab
-- `tabs`: read/update the active tab URL from the popup
-- `scripting`: declared (not currently used by `content.js`)
+- `activeTab`: access the active tab.
+- `tabs`: read/update the active tab URL from the popup.
+- `browsingData`: clear site data when switching accounts (popup).
 
 ## Compatibility
 
-- Chrome (Manifest V3)
+- Chrome (Manifest V3).
+- Firefox (Manifest V3; load temporarily or sign for permanent install).
