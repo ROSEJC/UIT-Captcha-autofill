@@ -27,7 +27,7 @@ Example: `What is 2+2? (4)` fills `4`.
 
 Firefox requires signing for permanent installs. For development and testing, load it temporarily:
 
-0. Download [uit_captcha_solver-1.0.zip](blob:https://github.com/9a7014be-d162-4e37-ae35-d39f2df9ca78)
+0. [Download uit_captcha_solver-1.0.zip](./web-ext-artifacts/uit_captcha_solver-1.0.zip?raw=1)
 1. Open `about:debugging#/runtime/this-firefox`.
 2. Click **Load Temporary Add-on...**.
 3. Upload the zip file
