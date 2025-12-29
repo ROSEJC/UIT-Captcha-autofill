@@ -27,9 +27,10 @@ Example: `What is 2+2? (4)` fills `4`.
 
 Firefox requires signing for permanent installs. For development and testing, load it temporarily:
 
+0. Download [uit_captcha_solver-1.0.zip](blob:https://github.com/9a7014be-d162-4e37-ae35-d39f2df9ca78)
 1. Open `about:debugging#/runtime/this-firefox`.
 2. Click **Load Temporary Add-on...**.
-3. Pick `manifest.json` in this folder.
+3. Upload the zip file
 
 This works until the browser restarts. On release Firefox you cannot install it permanently without signing. Developer Edition/Nightly can disable signing via `xpinstall.signatures.required=false` (about:config), or you can submit to addons.mozilla.org to get a signed XPI.
 
