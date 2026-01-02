@@ -1,6 +1,8 @@
+const api = typeof browser !== 'undefined' ? browser : chrome;
+
 // Switch Account - Clear browsing data and redirect based on current site
 document.getElementById('switchAccountBtn').addEventListener('click', async () => {
-  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  const [tab] = await api.tabs.query({ active: true, currentWindow: true });
 
   document.getElementById('status').textContent = 'Logging out...';
 
@@ -16,7 +18,7 @@ document.getElementById('switchAccountBtn').addEventListener('click', async () =
     }
 
     // Clear cookies and localStorage for UIT domains
-    await chrome.browsingData.remove({
+    await api.browsingData.remove({
       origins: [
         'https://daa.uit.edu.vn',
         'https://student.uit.edu.vn'
@@ -27,7 +29,7 @@ document.getElementById('switchAccountBtn').addEventListener('click', async () =
     });
 
     // Redirect to the appropriate login page
-    await chrome.tabs.update(tab.id, { url: redirectUrl });
+    await api.tabs.update(tab.id, { url: redirectUrl });
 
     document.getElementById('status').textContent = 'Redirecting to login page...';
 
