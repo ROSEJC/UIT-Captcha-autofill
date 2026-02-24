@@ -40,4 +40,5 @@ This extension is created for educational purposes and security research (vulner
 
 ---
 **Version:** 2.0  
-**Platform:** Manifest V3 (Chrome & Firefox Compatible)
+**Platform:** Manifest V3 (Chrome & Firefox Compatible)  
+***Tác giả không chịu trách nhiệm cho bất kỳ khiếu nại hoặc thiệt hại nào phát sinh từ việc sử dụng công cụ này.***
