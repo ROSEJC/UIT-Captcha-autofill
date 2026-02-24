@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "UIT CAPTCHA Solver",
-  "version": "1.0",
+  "version": "2.0",
   "description": "Automatically solves text-based CAPTCHA questions",
   "permissions": [
     "activeTab",
