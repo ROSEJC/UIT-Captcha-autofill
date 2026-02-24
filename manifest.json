@@ -5,10 +5,14 @@
   "description": "Automatically solves text-based CAPTCHA questions",
   "permissions": [
     "activeTab",
-    "scripting",
     "tabs",
     "browsingData"
   ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "uit-captcha-autofill@example.com"
+    }
+  },
   "host_permissions": [
     "https://daa.uit.edu.vn/*",
     "https://student.uit.edu.vn/*"
