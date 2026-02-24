@@ -4,7 +4,7 @@ A powerful browser extension designed to automatically detect and solve CAPTCHAs
 
 ## Key Features
 
-- **'alt' Attribute Exploitation**: Automatically detects and extracts CAPTCHA answers embedded in image `alt` tags (a common vulnerability in legacy systems).
+- **'alt' Attribute Exploitation**: Automatically detects and extracts CAPTCHA answers
 - **Arithmetic Math Solver**: Includes a standard `MathSolver` module to evaluate addition, subtraction, multiplication, and division problems directly from the UI.
 - **Smart Extraction**: Intelligent logic to identify answers enclosed in parentheses `(answer)` within label descriptions.
 - **Advanced Input Injection**: Uses `nativeInputValueSetter` techniques to bypass property overrides from modern JavaScript frameworks like React or Vue, ensuring the value is correctly registered.
