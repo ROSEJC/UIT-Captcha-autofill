@@ -1,61 +1,43 @@
-# UIT CAPTCHA Autofill
+# UIT CAPTCHA Autofill Extension - Version 2.0
 
-A browser extension that auto-fills UIT **text-based CAPTCHA** inputs when the answer is embedded in the label text inside parentheses.
+A powerful browser extension designed to automatically detect and solve CAPTCHAs on UIT (University of Information Technology) platforms by exploiting data vulnerabilities and solving logical expressions.
 
-Example: `What is 2+2? (4)` fills `4`.
+## 🚀 Key Features
 
-## What It Does
+- **'alt' Attribute Exploitation**: Automatically detects and extracts CAPTCHA answers embedded in image `alt` tags (a common vulnerability in legacy systems).
+- **Arithmetic Math Solver**: Includes a standard `MathSolver` module to evaluate addition, subtraction, multiplication, and division problems directly from the UI.
+- **Smart Extraction**: Intelligent logic to identify answers enclosed in parentheses `(answer)` within label descriptions.
+- **Advanced Input Injection**: Uses `nativeInputValueSetter` techniques to bypass property overrides from modern JavaScript frameworks like React or Vue, ensuring the value is correctly registered.
+- **Real-time Monitoring**: Utilizes `MutationObserver` to detect and solve new CAPTCHAs dynamically when the page content changes without requiring a refresh.
+- **Quick Account Switch**: Integrated popup feature to clear UIT session cookies and LocalStorage, allowing for instant logout and account switching.
 
-- Detects CAPTCHA containers (elements with `.captcha` or classes containing `captcha`)
-- Reads the `label` text and extracts the last parenthesized value
-- Fills the associated text input and triggers `input`/`change` events
-- Re-runs automatically when the page updates (via `MutationObserver`)
+## 🛠️ Installation (Chrome / Edge / Chromium)
 
-## Supported Site(s)
+1. Download or clone this repository to your local machine.
+2. Navigate to `chrome://extensions/` in your browser.
+3. Enable **Developer mode** using the toggle in the top right corner.
+4. Click the **Load unpacked** button.
+5. Select the root folder of this project.
+
+## 📂 Project Structure
+
+- `manifest.json`: Extension configuration and permission declarations (Manifest V3).
+- `content.js`: Main execution script that orchestrates the detection and solving logic.
+- `modules/`:
+    - `mathSolver.js`: Core logic for parsing and evaluating mathematical expressions.
+    - `answerExtractor.js`: Handles pattern matching for various answer formats (parentheses, etc.).
+    - `captchaSolver.js`: Middleware module that connects data extraction with input filling.
+- `popup.html/.js`: UI and logic for the extension menu (includes the Switch Account tool).
+
+## 🌐 Supported Domains
 
 - `https://daa.uit.edu.vn/*`
 - `https://student.uit.edu.vn/*`
 
-## Install on Chrome (unpacked)
+## ⚠️ Disclaimer
 
-1. Download or clone this repository.
-2. Open `chrome://extensions/`.
-3. Enable **Developer mode**.
-4. Click **Load unpacked** and select this project folder.
+This extension is created for educational purposes and security research (vulnerability analysis). Please use it responsibly and in accordance with your university's policies.
 
-## Install on Firefox (temporary, unsigned)
-
-Firefox requires signing for permanent installs. For development and testing, load it temporarily:
-
-0. [Download uit_captcha_solver-1.0.zip](./web-ext-artifacts/uit_captcha_solver-1.0.zip?raw=1)
-1. Open `about:debugging#/runtime/this-firefox`.
-2. Click **Load Temporary Add-on...**.
-3. Upload the zip file
-
-This works until the browser restarts. On release Firefox you cannot install it permanently without signing. Developer Edition/Nightly can disable signing via `xpinstall.signatures.required=false` (about:config), or you can submit to addons.mozilla.org to get a signed XPI.
-
-## Usage
-
-1. Visit `https://daa.uit.edu.vn/`.
-2. When a text CAPTCHA appears, the extension auto-fills it if it contains an answer in parentheses.
-3. Optional: click the extension icon and use **Switch Account** to clear UIT cookies and redirect to the login page.
-
-## Project Files
-
-- `content.js`: CAPTCHA extraction and autofill logic.
-- `popup.html` / `popup.js`: popup UI (includes Switch Account).
-- `manifest.json`: WebExtension manifest (Chrome/Firefox friendly).
-- `modules/`: shared helpers for solving/extracting answers.
-
-## Permissions
-
-Declared in `manifest.json`:
-
-- `activeTab`: access the active tab.
-- `tabs`: read/update the active tab URL from the popup.
-- `browsingData`: clear site data when switching accounts (popup).
-
-## Compatibility
-
-- Chrome (Manifest V3).
-- Firefox (Manifest V3; load temporarily or sign for permanent install).
+---
+**Version:** 2.0  
+**Platform:** Manifest V3 (Chrome & Firefox Compatible)
